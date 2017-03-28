@@ -13,6 +13,12 @@ SGT Davis:      50 pts
 SSG Eckland:    50 pts
 SSG Forehand:   10 pts
 
+    -- or --
+
+
+TEAM 1 - 90 pts
+TEAM 2 - 110 pts
+TEAM 3 - 150 pts
 '''
 
 #  This is a dictionary consisting of question numbers as keys, and their associated hashes as values
@@ -22,19 +28,39 @@ known_hashes = {1: "AAAAAAAAAAAAAAAAAAAA",
                 3: "CCCCCCCCCCCCCCCCCCCC"}
 
 class Scoreboard:
-    pass
+    '''
+    scoreboard = {1: "Team 1",
+                  2: "Team 2",
+                  3: "Team 3",
+                  4: "Team 4",
+                  5: "Team 5",
+                  6: "Team 6",
+                  7: "Team 7",
+                  8: "Team 8"}
+    '''
+    scoreboard = {"Team 1": 0,
+                  "Team 2": 0,
+                  "Team 3": 0,
+                  "Team 4": 0,
+                  "Team 5": 0,
+                  "Team 6": 0,
+                  "Team 7": 0,
+                  "Team 8": 0}
 
-class Player:
-    name = ""
-    rank = ""
-    def add_player(self, playerName, playerRank):
-        Player.name = playerName
-        Player.rank = playerRank
+class Team:
+    team_number = ""
+    points = ""
+
+    def numberOfTeams(number):
+        team_num = input("Enter number of teams in competition: ")
+        # for each number in team_num, create scoreboard with that team
+        # for iter in team_num:
+
+        Scoreboard.scoreboard["Team 1"] += 5
 
 def hash_checker(question, hash):
 
     # Check if hash is between 20 and 30 characters
-
     if (len(hash) < 20):
         raise Exception("String is too small")
     elif (len(hash) > 30):
@@ -44,6 +70,7 @@ def hash_checker(question, hash):
         print("CORRECT!")
         # send success message back to user
         # update scoreboard
+        # write to disk
     else:
         print("WRONG!")
         # notify user they got the message wrong
@@ -52,9 +79,7 @@ def hash_checker(question, hash):
 
 def display_menu():
     print("\n")
-    print("1.  Add/remove player")
-    print("2.  Display teams")
-    print("3.  Display scores")
+    print("1.  Display scoreboard")
     print("99. Exit")
 
 def display_scoreboard():
